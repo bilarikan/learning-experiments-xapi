@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  secure-proxy:
+    build: .
+    ports:
+      - "443:3000"
+    environment:
+      - PORT=3000
+      - API_KEY=${API_KEY}
+      - UPSTREAM_URL=${UPSTREAM_URL}
+      - CORS_ORIGIN=${CORS_ORIGIN}
+      - SSL_KEY_PATH=${SSL_KEY_PATH}
+      - SSL_CERT_PATH=${SSL_CERT_PATH}
+    volumes:
+      - ./certs:/usr/src/app/certs
+    restart: unless-stopped
