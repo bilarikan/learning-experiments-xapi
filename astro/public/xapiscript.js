@@ -3,20 +3,28 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     const statement = {
         "actor": {
-            "name": "John Doe",
-            "mbox": "mailto:john.doe@example.com"
-        },
-        "verb": {
-            "id": "http://adlnet.gov/expapi/verbs/attended",
-            "display": {"en-US": "attended"}
-        },
-        "object": {
-            "id": "http://example.com/your-page",
+            "objectType": "Group",
+            "name": "Troubleshooting Customer Persona",
+            "member": [{"name": "Persona: Seeking Help"}]
+          },
+          "verb": {
+            "id": "http://adlnet.gov/expapi/verbs/viewed",
+            "display": {"en-US": "viewed"}
+          },
+          "object": {
+            "id": "https://documentation.example.com/features/[feature-name]",
             "definition": {
-                "name": {"en-US": "Example Page"},
-                "description": {"en-US": "A page visited by the user."}
+              "name": {"en-US": "Feature Documentation for [Feature Name]"},
+              "description": {"en-US": "User viewed the documentation for [Feature Name]."},
+              "type": "http://adlnet.gov/expapi/activities/documentation"
             }
-        }
+          },
+          "timestamp": "2024-03-27T18:00:00Z",
+          "context": {
+            "registration": "[unique-registration-id]",
+            "platform": "Documentation Page",
+            "language": "en-US"
+            }
     };
 
     // This endpoint and authentication details should be modified according to your real LRS and security practices.

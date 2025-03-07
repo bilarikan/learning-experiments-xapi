@@ -7,8 +7,9 @@ services:
       - "443:3000"
     environment:
       - PORT=3000
-      - API_KEY=${API_KEY}
-      - UPSTREAM_URL=${UPSTREAM_URL}
+      - XAPI_KEY=${XAPI_KEY}
+      - XAPI_SECRET=${XAPI_SECRET}
+      - XAPI_ENDPOINT=${XAPI_ENDPOINT}
       - CORS_ORIGIN=${CORS_ORIGIN}
       - SSL_KEY_PATH=${SSL_KEY_PATH}
       - SSL_CERT_PATH=${SSL_CERT_PATH}
