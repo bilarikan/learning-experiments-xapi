@@ -27,32 +27,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
     };
 
-    // This endpoint and authentication details should be modified according to your real LRS and security practices.
-    const endpoint = 'http://localhost:8080/data/xAPI/statements';
-    
-    // For demonstration purposes, these are included directly here,
-    // but in a production environment, consider securing these values.
-    const apiKey = 'my_key'; // Ideally, loaded in a secure manner
-    const apiSecret = 'my_secret'; // Ideally, loaded in a secure manner
-
-    // Constructing the Basic Auth Header
-    const authHeader = 'Basic ' + btoa(`${apiKey}:${apiSecret}`);
-
-    fetch(endpoint, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': authHeader,
-            'X-Experience-API-Version': '1.0.3' // Ensure compatibility with your LRS version
-        },
-        body: JSON.stringify(statement),
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => console.log('xAPI statement sent successfully:', data))
-    .catch((error) => console.error('Error sending xAPI statement:', error));
+fetch('/proxy/xapi', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(statement)
+  })
+  .then(response => response.ok ? response.json() : Promise.reject(response))
+  .then(data => console.log('Success:', data))
+  .catch(error => console.error('Error:', error));
 });
