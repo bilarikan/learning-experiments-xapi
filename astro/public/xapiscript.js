@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     };
 
     // This endpoint and authentication details should be modified according to your real LRS and security practices.
-    const endpoint = 'http://localhost:8080/data/xAPI/statements';
+    const endpoint = 'http://localhost:8080/xapi/statements';
     
     // For demonstration purposes, these are included directly here,
     // but in a production environment, consider securing these values.
